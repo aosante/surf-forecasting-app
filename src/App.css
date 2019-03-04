@@ -1,11 +1,11 @@
-@import 'https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700';
+@import 'https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700|Shadows+Into+Light';
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Raleway', sans-serif;
   background: #fafafa;
 }
 
 p {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.1em;
   font-weight: 300;
   line-height: 1.7em;
@@ -46,7 +46,7 @@ a:focus {
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  color: #fff;
+  color: #999;
   transition: all 0.3s;
 }
 
@@ -54,38 +54,47 @@ a:focus {
   margin-left: -250px;
 }
 
+#title.active {
+  display: none;
+}
+
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #7608a5;
+  background: #000;
 }
 
 #sidebar ul.components {
   padding: 20px 0;
-  border-bottom: 1px solid #7608a5;
+  border-bottom: 1px solid #2fbc1a;
 }
 
 #sidebar ul p {
-  color: #fff;
+  color: #999;
   padding: 10px;
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 1.3em;
 }
 
 #sidebar ul li a {
   padding: 10px;
   font-size: 1.1em;
   display: block;
-  color: #fff;
+  color: #999;
+  text-align: center;
+  margin-bottom: 2em;
 }
 
 #sidebar ul li a:hover {
-  color: #7608a5;
-  background: #fff;
+  color: #2fbc1a;
+  background: #000;
   text-decoration: none;
 }
 
 #sidebar ul li.active > a,
 a[aria-expanded='true'] {
   color: #fff;
-  background: #7608a5;
+  background: #2fbc1a;
 }
 
 a[data-toggle='collapse'] {
@@ -101,7 +110,7 @@ a[data-toggle='collapse'] {
 }
 
 #sidebarCollapse {
-  background: #7608a5;
+  background: #2fbc1a;
   border: none;
 }
 

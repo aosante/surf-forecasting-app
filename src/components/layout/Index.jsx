@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import Forecast from '../Forecast/Forecast';
 import styled from 'styled-components';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const Content = styled.div`
   width: 100%;
@@ -12,10 +13,15 @@ const Content = styled.div`
 
 const Index = () => {
   return (
-    <Content>
-      <Navbar />
-      <Forecast />
-    </Content>
+    <Router>
+      <Content>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Forecast} />
+          {/* route to spot selector, rendered when user click on nav */}
+        </Switch>
+      </Content>
+    </Router>
   );
 };
 

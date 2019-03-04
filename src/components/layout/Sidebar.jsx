@@ -17,7 +17,16 @@ const Sidebar = _ => {
       </div>
 
       <ul className="list-unstyled components">
-        <p>Dummy Heading</p>
+        <p
+          style={{
+            color: '#2fbc1a',
+            fontFamily: 'Shadows Into Light',
+            fontSize: '1.7em',
+            backgroundColor: 'rgba(0, 0, 0, 0.7)'
+          }}
+        >
+          Know Before You Go
+        </p>
         <li>
           <a href="#">About</a>
         </li>

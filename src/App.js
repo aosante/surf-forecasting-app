@@ -7,17 +7,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 class App extends Component {
   render() {
     return (
-      <Router>
-        <React.Fragment>
-          <div className="wrapper">
-            <Sidebar />
-            <Switch>
-              <Route exact path="/" component={Index} />
-              {/* //the other route is the page to select the favorite spots */}
-            </Switch>
-          </div>
-        </React.Fragment>
-      </Router>
+      <React.Fragment>
+        <div className="wrapper">
+          <Sidebar />
+          <Index />
+        </div>
+      </React.Fragment>
     );
   }
 }
