@@ -18,6 +18,7 @@ class Rating extends Component {
   };
 
   componentDidMount() {
+    //poplate state with the stars needed for the spot
     const { solidRating, fadedRating } = this.props;
     let updRatings = [];
     for (let i = 0; i < solidRating; i++) {
