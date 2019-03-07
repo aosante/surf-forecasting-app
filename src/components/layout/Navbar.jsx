@@ -78,7 +78,7 @@ class Navbar extends Component {
           onClick={this.onToggleClick}
         >
           <svg
-            className="svg-inline--fa fa-align-right fa-w-14"
+            className="svg-inline--fa fa-align-right fa-w-14 mr-1"
             aria-hidden="true"
             data-prefix="fas"
             data-icon="align-right"
@@ -87,7 +87,6 @@ class Navbar extends Component {
             viewBox="0 0 448 512"
             data-fa-i2svg=""
             width="1em"
-            className="mr-1"
           >
             <path
               fill="currentColor"

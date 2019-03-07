@@ -6,14 +6,11 @@ const SurfCard = styled.div``;
 const SurfHeight = () => {
   return (
     <SurfCard className="card">
-      <div class="card-body">
-        <h5 class="card-title">Surf Height and Direction</h5>
-        <p class="card-text">
+      <div className="card-body">
+        <h3 className="card-title">Surf Height & Direction</h3>
+        <p className="card-text">
           With supporting text below as a natural lead-in to additional content.
         </p>
-        <a href="#" class="btn btn-dark">
-          Go somewhere
-        </a>
       </div>
     </SurfCard>
   );

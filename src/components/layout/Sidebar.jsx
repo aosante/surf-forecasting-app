@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.png';
+import { Link } from 'react-router-dom';
 
 const Sidebar = _ => {
   return (
@@ -28,18 +29,13 @@ const Sidebar = _ => {
           Know Before You Go
         </p>
         <li>
-          <a href="#">About</a>
+          <Link to="/">About</Link>
         </li>
         <li>
-          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-            Pages
-          </a>
+          <Link to="/">Pages</Link>
         </li>
         <li>
-          <a href="#">Portfolio</a>
-        </li>
-        <li>
-          <a href="#">Contact</a>
+          <Link to="/">Portfolio</Link>
         </li>
       </ul>
     </nav>
