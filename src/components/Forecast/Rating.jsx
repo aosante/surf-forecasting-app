@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const RatingCard = styled.div`
+  @media (max-width: 1010px) {
+    margin-top: 3em;
+  }
   li {
     list-style-type: none;
   }
@@ -17,37 +20,25 @@ class Rating extends Component {
     ratings: []
   };
 
-  componentDidMount() {
-    //poplate state with the stars needed for the spot
-    const { solidRating, fadedRating } = this.props;
-    let updRatings = [];
-    for (let i = 0; i < solidRating; i++) {
-      updRatings.push('http://cdnimages.magicseaweed.com/star_filled.png');
-    }
-    for (let i = 0; i < fadedRating; i++) {
-      updRatings.push('http://cdnimages.magicseaweed.com/star_empty.png');
-    }
-    this.setState({ ratings: updRatings });
-  }
   render() {
-    const { ratings } = this.state;
+    const { ratings } = this.props;
     return (
-      <RatingCard className="card mb-3">
+      <RatingCard className="card h-100">
         <div className="card-body">
           <h3 className="card-title">Swell Rating</h3>
           <div className="stars">
             {ratings.map((rating, i) => (
-              <img src={rating} key={i} />
+              <img src={rating} key={i} alt="Star Icon" />
             ))}
           </div>
         </div>
         <div className="card-footer text-muted">
           <ul className="list-group">
             <li>
-              <strong>Solid stars: </strong>swell quality/power
+              <strong>*Solid stars: </strong>swell quality/power
             </li>
             <li>
-              <strong>Faded stars: </strong>rating affected by wind
+              <strong>*Faded stars: </strong>rating affected by wind
             </li>
           </ul>
         </div>

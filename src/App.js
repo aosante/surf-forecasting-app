@@ -11,6 +11,7 @@ const Content = styled.div`
   padding: 20px;
   min-height: 100vh;
   transition: all 0.3s;
+  font-family: 'Raleway', sans-serif;
 `;
 
 class App extends Component {

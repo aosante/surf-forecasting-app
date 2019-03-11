@@ -9,7 +9,7 @@ const Nav = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: #353535;
   h1 {
     flex: 5;
     justify-self: center;
