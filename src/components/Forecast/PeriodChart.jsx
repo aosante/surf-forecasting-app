@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import secs from '../../img/secs.png';
 
 const Chart = styled.div`
   width: 45%;
@@ -13,7 +14,8 @@ const Chart = styled.div`
     box-shadow: 0 0 5px 0 #000;
   }
   .legend {
-    padding: 1em;
+    margin-top: 1em;
+    box-shadow: unset;
   }
 `;
 
@@ -21,8 +23,8 @@ const PeriodChart = ({ periodChart }) => {
   return (
     <Chart>
       <h3>Swell Period</h3>
-      <img src={periodChart} alt="Period Chart" />
-      <div className="legend">color key here</div>
+      <img src={periodChart} alt="Period Chart" />{' '}
+      <img className="legend" src={secs} alt="period legend" />
     </Chart>
   );
 };

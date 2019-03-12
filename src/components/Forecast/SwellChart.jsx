@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ft from '../../img/ft.png';
 
 const Chart = styled.div`
   width: 45%;
@@ -15,6 +16,7 @@ const Chart = styled.div`
   }
   .legend {
     padding: 1em;
+    box-shadow: unset;
   }
 `;
 
@@ -23,7 +25,7 @@ const SwellChart = ({ swellChart }) => {
     <Chart>
       <h3>Swell Height</h3>
       <img src={swellChart} alt="Swell Chart" />
-      <div className="legend">color key here</div>
+      <img src={ft} alt="swell legend" className="legend" />
     </Chart>
   );
 };

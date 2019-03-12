@@ -6,7 +6,6 @@ import Weather from './Weather';
 import PeriodChart from './PeriodChart';
 import SwellChart from './SwellChart';
 import axios from 'axios';
-import { stat } from 'fs';
 
 const Content = styled.div`
   height: auto;
@@ -17,7 +16,7 @@ const Content = styled.div`
   .charts {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   @media (max-width: 1010px) {
     .charts {
@@ -27,11 +26,20 @@ const Content = styled.div`
       width: 100%;
     }
   }
+
+  label {
+    font-size: 1.5em;
+    color: #2fbc1a;
+  }
 `;
 
 class Forecast extends Component {
+  constructor(props) {
+    super(props);
+  }
   // state will be initialized in this component
   state = {
+    value: 'Witches Rock',
     periodChart: '',
     swellChart: '',
     //weather data
@@ -86,7 +94,6 @@ class Forecast extends Component {
         });
       })
       .then(_ => {
-        this.setState({ solidRating: this.state.solidRating });
         let updRatings = [];
         for (let i = 0; i < this.state.solidRating; i++) {
           updRatings.push('http://cdnimages.magicseaweed.com/star_filled.png');
@@ -124,6 +131,21 @@ class Forecast extends Component {
         <div className=".container mt-5 charts">
           <PeriodChart periodChart={this.state.periodChart} />
           <SwellChart swellChart={this.state.swellChart} />
+        </div>
+        {/* insert row here */}
+        <div className="form-group col-sm-12 col-md-4 mt-3">
+          <label htmlFor="exampleFormControlSelect1">Select your spot</label>
+          <select
+            className="form-control container"
+            id="exampleFormControlSelect1"
+            onChange={this.props.change}
+            value={this.props.value}
+          >
+            <option value="Witches Rock">Witches Rock (North Pacific)</option>
+            <option value="Playa Hermosa">
+              Playa Hermosa (Central Pacific)
+            </option>
+          </select>
         </div>
       </Content>
     );

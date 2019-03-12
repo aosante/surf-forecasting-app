@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.png';
+import logo from '../../img/logo.png';
 import { Link } from 'react-router-dom';
 
 const Sidebar = _ => {
@@ -29,15 +29,18 @@ const Sidebar = _ => {
           Know Before You Go
         </p>
         <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/">Forecast</Link>
+        </li>
+        <li>
           <Link to="/">About</Link>
         </li>
-        <li>
-          <Link to="/">Pages</Link>
-        </li>
-        <li>
-          <Link to="/">Portfolio</Link>
-        </li>
       </ul>
+      <a className="msw-logo" href="http://magicseaweed.com">
+        <img src="https://im-1-uk.msw.ms/msw_powered_by.png" />
+      </a>
     </nav>
   );
 };

@@ -16,6 +16,18 @@ const Content = styled.div`
 // test
 
 class App extends Component {
+  state = {
+    spotName: 'Witches Rock'
+  };
+
+  change = _ => {
+    if (this.state.spotName === 'Witches Rock') {
+      this.setState({ spotName: 'Playa Hermosa' });
+    } else {
+      this.setState({ spotName: 'Witches Rock' });
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -23,9 +35,19 @@ class App extends Component {
           <div className="wrapper">
             <Sidebar />
             <Content>
-              <Navbar />
+              <Navbar spotName={this.state.spotName} />
               <Switch>
-                <Route exact path="/" component={Forecast} />
+                <Route
+                  exact
+                  path="/"
+                  render={props => (
+                    <Forecast
+                      {...props}
+                      change={this.change}
+                      value={this.state.spotName}
+                    />
+                  )}
+                />
               </Switch>
             </Content>
           </div>

@@ -48,6 +48,7 @@ a:focus {
   max-width: 250px;
   color: #999;
   transition: all 0.3s;
+  position: relative;
 }
 
 #sidebar.active {
@@ -112,6 +113,16 @@ a[data-toggle='collapse'] {
 #sidebarCollapse {
   background: #2fbc1a;
   border: none;
+}
+
+.msw-logo {
+  padding: 1em;
+  position: absolute;
+  bottom: 1em;
+  left: 4.2%;
+}
+.msw-logo img {
+  box-shadow: 0 0 5px #fff;
 }
 
 /* ---------------------------------------------------

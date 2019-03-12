@@ -97,7 +97,7 @@ class Navbar extends Component {
         </button>
         <div className="">
           <h1 id="title" className="ml-5">
-            Costa Rica Surf Forecast
+            {this.props.spotName} Surf Forecast
           </h1>
         </div>
       </Nav>
