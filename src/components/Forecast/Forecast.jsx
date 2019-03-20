@@ -16,7 +16,7 @@ const Content = styled.div`
   .charts {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   @media (max-width: 1010px) {
     .charts {
@@ -36,38 +36,41 @@ const Content = styled.div`
 class Forecast extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      //forecastNumber will change when clicking buttons
+      forecastNumber: 4,
+      value: 'Witches Rock',
+      //charts
+      periodChart: '',
+      swellChart: '',
+      //weather data
+      weather: '',
+      temperature: 0,
+      pressure: 0,
+      localTimestamp: 0,
+      //ratings data
+      solidRating: 0,
+      fadedRating: 0,
+      //swell data
+      absMaxBreakingHeight: 0,
+      absMinBreakingHeight: 0,
+      compassDirection: '',
+      period: 0,
+      //wind data
+      direction: 0,
+      speed: 0,
+      //stars ratings
+      ratings: []
+    };
   }
-  // state will be initialized in this component
-  state = {
-    value: 'Witches Rock',
-    periodChart: '',
-    swellChart: '',
-    //weather data
-    weather: '',
-    temperature: 0,
-    pressure: 0,
-    localTimestamp: 0,
-    //ratings data
-    solidRating: 0,
-    fadedRating: 0,
-    //swell data
-    absMaxBreakingHeight: 0,
-    absMinBreakingHeight: 0,
-    compassDirection: '',
-    period: 0,
-    //wind data
-    direction: 0,
-    speed: 0,
-    //stars ratings
-    ratings: []
-  };
-  componentDidMount() {
+
+  fetchData(spotId) {
     let forecastNumber = 4;
     axios
       .get(
         `https://cors-anywhere.herokuapp.com/http://magicseaweed.com/api/${
           process.env.REACT_APP_MS_KEY
-        }/forecast/?spot_id=443&units=us&fields=charts.*,condition.weather,condition.temperature,condition.pressure,localTimestamp,solidRating,fadedRating,swell.absMaxBreakingHeight,swell.absMinBreakingHeight,swell.components.primary.compassDirection,swell.components.primary.period,wind.direction,wind.speed`
+        }/forecast/?spot_id=${spotId}&units=us&fields=charts.*,condition.weather,condition.temperature,condition.pressure,localTimestamp,solidRating,fadedRating,swell.absMaxBreakingHeight,swell.absMinBreakingHeight,swell.components.primary.compassDirection,swell.components.primary.period,wind.direction,wind.speed`
       )
       .then(res => {
         console.log(res.data[forecastNumber]);
@@ -105,9 +108,37 @@ class Forecast extends Component {
       })
       .catch(err => console.log(err));
   }
+
+  componentDidMount() {
+    this.fetchData(this.props.spotId);
+  }
+
+  //change spot
+  componentDidUpdate(prevProps) {
+    if (this.props.spotId !== prevProps.spotId) {
+      this.fetchData(this.props.spotId);
+    }
+  }
+
   render() {
     return (
       <Content className="container">
+        <div className="row mb-3">
+          <div className="form-group col-lg-4 col-sm-12 mt-3">
+            <label htmlFor="exampleFormControlSelect1">Select your spot</label>
+            <select
+              className="form-control container"
+              id="exampleFormControlSelect1"
+              onChange={this.props.change}
+              value={this.props.value}
+            >
+              <option value="Witches Rock">Witches Rock (North Pacific)</option>
+              <option value="Playa Hermosa">
+                Playa Hermosa (Central Pacific)
+              </option>
+            </select>
+          </div>
+        </div>
         <div className="row">
           <div className="col-lg-4 col-sm-12">
             <SurfHeight
@@ -128,24 +159,9 @@ class Forecast extends Component {
             <Rating ratings={this.state.ratings} />
           </div>
         </div>
-        <div className=".container mt-5 charts">
+        <div className="container mt-5 charts">
           <PeriodChart periodChart={this.state.periodChart} />
           <SwellChart swellChart={this.state.swellChart} />
-        </div>
-        {/* insert row here */}
-        <div className="form-group col-sm-12 col-md-4 mt-3">
-          <label htmlFor="exampleFormControlSelect1">Select your spot</label>
-          <select
-            className="form-control container"
-            id="exampleFormControlSelect1"
-            onChange={this.props.change}
-            value={this.props.value}
-          >
-            <option value="Witches Rock">Witches Rock (North Pacific)</option>
-            <option value="Playa Hermosa">
-              Playa Hermosa (Central Pacific)
-            </option>
-          </select>
         </div>
       </Content>
     );

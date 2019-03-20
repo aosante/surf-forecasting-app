@@ -39,7 +39,11 @@ const Sidebar = _ => {
         </li>
       </ul>
       <a className="msw-logo" href="http://magicseaweed.com">
-        <img src="https://im-1-uk.msw.ms/msw_powered_by.png" />
+        <img
+          style={{ borderRadius: '5px' }}
+          src="https://im-1-uk.msw.ms/msw_powered_by.png"
+          alt="Magicseaweed Credit Badge"
+        />
       </a>
     </nav>
   );

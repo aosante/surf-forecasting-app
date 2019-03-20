@@ -17,14 +17,15 @@ const Content = styled.div`
 
 class App extends Component {
   state = {
-    spotName: 'Witches Rock'
+    spotName: 'Witches Rock',
+    spotId: 443
   };
 
   change = _ => {
     if (this.state.spotName === 'Witches Rock') {
-      this.setState({ spotName: 'Playa Hermosa' });
+      this.setState({ spotName: 'Playa Hermosa', spotId: 987 });
     } else {
-      this.setState({ spotName: 'Witches Rock' });
+      this.setState({ spotName: 'Witches Rock', spotId: 443 });
     }
   };
 
@@ -45,6 +46,7 @@ class App extends Component {
                       {...props}
                       change={this.change}
                       value={this.state.spotName}
+                      spotId={this.state.spotId}
                     />
                   )}
                 />
