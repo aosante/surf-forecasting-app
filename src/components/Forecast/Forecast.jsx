@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Rating from './Rating';
 import SurfHeight from './SurfHeight';
 import Weather from './Weather';
+import Wind from './Wind';
 import PeriodChart from './PeriodChart';
 import SwellChart from './SwellChart';
 import axios from 'axios';
@@ -73,7 +74,7 @@ class Forecast extends Component {
         }/forecast/?spot_id=${spotId}&units=us&fields=charts.*,condition.weather,condition.temperature,condition.pressure,localTimestamp,solidRating,fadedRating,swell.absMaxBreakingHeight,swell.absMinBreakingHeight,swell.components.primary.compassDirection,swell.components.primary.period,wind.direction,wind.speed`
       )
       .then(res => {
-        console.log(res.data[forecastNumber]);
+        console.log(res.data);
         this.setState({
           periodChart: res.data[forecastNumber].charts.period,
           swellChart: res.data[forecastNumber].charts.swell,
@@ -121,6 +122,20 @@ class Forecast extends Component {
   }
 
   render() {
+    const {
+      absMaxBreakingHeight,
+      absMinBreakingHeight,
+      compassDirection,
+      period,
+      weather,
+      temperature,
+      pressure,
+      ratings,
+      periodChart,
+      swellChart,
+      direction,
+      speed
+    } = this.state;
     return (
       <Content className="container">
         <div className="row mb-3">
@@ -142,26 +157,27 @@ class Forecast extends Component {
         <div className="row">
           <div className="col-lg-4 col-sm-12">
             <SurfHeight
-              maxHeight={this.state.absMaxBreakingHeight}
-              minHeight={this.state.absMinBreakingHeight}
-              direction={this.state.compassDirection}
-              period={this.state.period}
+              maxHeight={absMaxBreakingHeight}
+              minHeight={absMinBreakingHeight}
+              direction={compassDirection}
+              period={period}
             />
           </div>
           <div className="col-lg-4 col-sm-12">
-            <Weather
-              weather={this.state.weather}
-              temp={this.state.temperature}
-              pressure={this.state.pressure}
-            />
+            <Weather weather={weather} temp={temperature} pressure={pressure} />
           </div>
           <div className="col-lg-4 col-sm-12">
-            <Rating ratings={this.state.ratings} />
+            <Rating ratings={ratings} />
           </div>
         </div>
-        <div className="container mt-5 charts">
-          <PeriodChart periodChart={this.state.periodChart} />
-          <SwellChart swellChart={this.state.swellChart} />
+        <div className="row mt-4">
+          <div className="col-sm-12 col-lg-4">
+            <Wind direction={direction} speed={speed} />
+          </div>
+        </div>
+        <div className="container mt-3 charts">
+          <PeriodChart periodChart={periodChart} />
+          <SwellChart swellChart={swellChart} />
         </div>
       </Content>
     );
